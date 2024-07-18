@@ -1,7 +1,11 @@
+from model.Color import Color
 from model.pieces.Piece import Piece
 
 
 class Knight(Piece):
+    def __init__(self, color: Color):
+        super().__init__(color, color.name[0] + 'N')
+
     def getTrackToCheck(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> list[tuple[int, int]]:
         return []
 

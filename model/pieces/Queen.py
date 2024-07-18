@@ -1,8 +1,12 @@
-from model.pieces.Rook import Rook
+from model.Color import Color
 from model.pieces.Bishop import Bishop
+from model.pieces.Piece import Piece
+from model.pieces.Rook import Rook
 
 
 class Queen(Rook, Bishop):
+    def __init__(self, color: Color):
+        Piece.__init__(self, color, color.name[0] + self.__class__.__name__[0])
 
     def getTrackToCheck(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> list[tuple[int, int]]:
         if self.__isRook(oldRow, oldCol, newRow, newCol):
