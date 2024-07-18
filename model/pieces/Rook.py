@@ -21,7 +21,7 @@ class Rook(Piece):
             for i in range(newRow - oldRow - 1):
                 track.append((oldRow + i + 1, col))
         else:
-            for i in range(oldRow - newRow + 1):
+            for i in range(oldRow - newRow - 1):
                 track.append((oldRow - i - 1, col))
         return track
 
@@ -32,6 +32,6 @@ class Rook(Piece):
             for i in range(newCol - oldCol - 1):
                 track.append((row, oldCol + i + 1))
         else:
-            for i in range(oldCol - newCol + 1):
+            for i in range(oldCol - newCol - 1):
                 track.append((row, oldCol - i - 1))
         return track
