@@ -11,7 +11,7 @@ class Rook(Piece):
         return (self.__trackForRow(oldRow, newRow, oldCol) if (oldCol == newCol)
                 else self.__trackForCol(oldCol, newCol, oldRow))
 
-    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> bool:
+    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int, pieceAtNewPlace: Piece | None) -> bool:
         return ((oldCol == newCol) and (oldRow != newRow)) or ((oldCol != newCol) and (oldRow == newRow))
 
     @staticmethod

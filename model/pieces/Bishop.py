@@ -19,7 +19,7 @@ class Bishop(Piece):
             else:
                 return self.__getDownRightMovingTrack(oldRow, oldCol, iteration)
 
-    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> bool:
+    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int, pieceAtNewPlace: Piece | None) -> bool:
         rowDiff = abs(oldRow - newRow)
         colDiff = abs(oldCol - newCol)
         return rowDiff == colDiff

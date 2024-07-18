@@ -11,8 +11,9 @@ class Piece(ABC):
         self.symbol = symbol
         # print("Piece created = ", self.name, "Piece color = ", self.pieceColor.name)
 
-    def validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> bool:
-        return self.__validateNewMove(newRow, newCol) and self._validate(oldRow, oldCol, newRow, newCol)
+    def validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int, pieceAtNewPlace: 'Piece') -> bool:
+        return (self.__validateNewMove(newRow, newCol) and
+                self._validate(oldRow, oldCol, newRow, newCol, pieceAtNewPlace))
 
     @staticmethod
     def __validateNewMove(newRow: int, newCol: int) -> bool:
@@ -22,7 +23,7 @@ class Piece(ABC):
         return result
 
     @abstractmethod
-    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> bool:
+    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int, pieceAtNewPlace: 'Piece') -> bool:
         return False
 
     @abstractmethod

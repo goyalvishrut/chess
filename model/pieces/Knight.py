@@ -9,7 +9,7 @@ class Knight(Piece):
     def getTrackToCheck(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> list[tuple[int, int]]:
         return []
 
-    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> bool:
+    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int, pieceAtNewPlace: Piece | None) -> bool:
         return (self.__validateUpTwoMove(oldRow, oldCol, newRow, newCol) or
                 self.__validateUpDownMove(oldRow, oldCol, newRow, newCol) or
                 self.__validateLeftTwoMove(oldRow, oldCol, newRow, newCol) or

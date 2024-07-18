@@ -9,7 +9,7 @@ class King(Piece):
     def getTrackToCheck(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> list[tuple[int, int]]:
         return []
 
-    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> bool:
+    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int, pieceAtNewPlace: Piece | None) -> bool:
         return self.__validateKing(oldRow, oldCol, newRow, newCol)
 
     @staticmethod

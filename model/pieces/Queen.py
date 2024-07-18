@@ -14,7 +14,7 @@ class Queen(Rook, Bishop):
         else:
             return Bishop.getTrackToCheck(self, oldRow, oldCol, newRow, newCol)
 
-    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> bool:
+    def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int, pieceAtNewPlace: Piece | None) -> bool:
         # resultBishop = super(Rook, self)._validate(oldRow, oldCol, newRow, newCol)
         # resultRook = super()._validate(oldRow, oldCol, newRow, newCol)
 
@@ -24,7 +24,7 @@ class Queen(Rook, Bishop):
         return resultBishop or resultRook
 
     def __isRook(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> bool:
-        return Rook._validate(self, oldRow, oldCol, newRow, newCol)
+        return Rook._validate(self, oldRow, oldCol, newRow, newCol, None)
 
     def __isBishop(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> bool:
-        return Bishop._validate(self, oldRow, oldCol, newRow, newCol)
+        return Bishop._validate(self, oldRow, oldCol, newRow, newCol, None)
