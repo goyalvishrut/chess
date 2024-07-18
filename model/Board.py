@@ -104,9 +104,9 @@ class Board:
     @staticmethod
     def __printStartRow(r: int, c: int):
         if c == 0:
-            print(r + 1, end=" ")
+            print(8 - r, end=" ")
 
     @staticmethod
     def __printEndRow(r: int, c: int):
         if c == 7:
-            print(r + 1, end=" ")
+            print(8 - r, end=" ")
