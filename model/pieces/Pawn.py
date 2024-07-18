@@ -7,8 +7,8 @@ class Pawn(Piece):
         super().__init__(color, color.name[0] + self.__class__.__name__[0])
 
     def getTrackToCheck(self, oldRow: int, oldCol: int, newRow: int, newCol: int) -> list[tuple[int, int]]:
-        return (self.__getTrackForWhite(oldRow, oldCol, newRow, newCol) if self.color == Color.WHITE
-                else self.__getTrackForBlack(oldRow, oldCol, newRow, newCol))
+        return (self.__getTrackForWhite(oldRow, oldCol, newCol) if self.color == Color.WHITE
+                else self.__getTrackForBlack(oldRow, oldCol, newCol))
 
     def _validate(self, oldRow: int, oldCol: int, newRow: int, newCol: int, pieceAtNewPlace: Piece | None) -> bool:
         result = (self.validateWhitePawn(oldRow, newRow, ) if self.color == Color.WHITE
@@ -33,14 +33,14 @@ class Pawn(Piece):
         return (newRow - oldRow) in validDiff
 
     @staticmethod
-    def __getTrackForWhite(oldRow: int, oldCol: int, newRow: int, newCol: int) -> list[tuple[int, int]]:
+    def __getTrackForWhite(oldRow: int, oldCol: int, newCol: int) -> list[tuple[int, int]]:
         if oldCol == newCol:
             return [(oldRow - 1, oldCol)]
         else:
             return []
 
     @staticmethod
-    def __getTrackForBlack(oldRow: int, oldCol: int, newRow: int, newCol: int) -> list[tuple[int, int]]:
+    def __getTrackForBlack(oldRow: int, oldCol: int, newCol: int) -> list[tuple[int, int]]:
         if oldCol == newCol:
             return [(oldRow + 1, oldCol)]
         else:
