@@ -71,7 +71,7 @@ class Board:
         return (oldPlacePiece is not None and
                 oldPlacePiece.color is self.__currentPlayerChance and
                 (newPlacePiece is None or newPlacePiece.color is not self.__currentPlayerChance) and
-                oldPlacePiece.validate(oldRow, oldCol, newRow, newCol) and
+                oldPlacePiece.validate(oldRow, oldCol, newRow, newCol, newPlacePiece) and
                 self.__validateJump(oldPlacePiece, old, new)
                 )
 
