@@ -1,11 +1,11 @@
-from model.pieces.Rook import Rook
+from model.Color import Color, toOppositeColor
 from model.pieces.Bishop import Bishop
-from model.pieces.Queen import Queen
-from model.pieces.Pawn import Pawn
 from model.pieces.King import King
 from model.pieces.Knight import Knight
-from model.Color import Color, toOppositeColor
+from model.pieces.Pawn import Pawn
 from model.pieces.Piece import Piece
+from model.pieces.Queen import Queen
+from model.pieces.Rook import Rook
 
 
 class Board:
@@ -31,12 +31,18 @@ class Board:
         self.__currentPlayerChance = white
 
     def printCurrentBoard(self):
-        for i in self.__currentBoard:
-            for j in i:
-                if j is not None:
-                    print(j.symbol, end=" ")
+        iterations = len(self.__currentBoard)
+        for r in range(iterations):
+            for c in range(iterations):
+                piece = self.__currentBoard[r][c]
+                self.__printTopColHeader(r, c, iterations)
+                self.__printStartRow(r, c)
+                if piece is not None:
+                    print(piece.symbol, end=" ")
                 else:
                     print("--", end=" ")
+                self.__printEndRow(r, c)
+                self.__printBotColHeader(r, c, iterations)
             print('\n', end="")
         print()
 
@@ -78,3 +84,29 @@ class Board:
             if self.__currentBoard[r][c] is not None:
                 return False
         return True
+
+    @staticmethod
+    def __printCol(iterations: int):
+        print(" ", end=" ")
+        for i in range(iterations):
+            print(chr(ord('a') + i), end="  ")
+
+    def __printTopColHeader(self, r: int, c: int, iterations):
+        if r == 0 and c == 0:
+            self.__printCol(iterations)
+            print()
+
+    def __printBotColHeader(self, r: int, c: int, iterations):
+        if r == 7 and c == 7:
+            print()
+            self.__printCol(iterations)
+
+    @staticmethod
+    def __printStartRow(r: int, c: int):
+        if c == 0:
+            print(r + 1, end=" ")
+
+    @staticmethod
+    def __printEndRow(r: int, c: int):
+        if c == 7:
+            print(r + 1, end=" ")
